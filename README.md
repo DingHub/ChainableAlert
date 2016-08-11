@@ -1,7 +1,8 @@
 # ChainableAlert
 Chainable use of Alert.<br>
 ---
-I created a class ChainableAlert, and make an extension of UIViewController to add chainable use of alert.
+I created a class ChainableAlert, and make an extension of UIViewController to add chainable use of alert.<br>
+If the device is below iOS 8, UIAlertView or UIActionSheet will be used, else, UIAlertController used.<br>
 Usage:
 ---
 in view controller:
