@@ -34,7 +34,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
             .show(animated: true, fromPosition: (20, 30)) {
                 print("showed")
         }
+        
     }
-
 }
 
