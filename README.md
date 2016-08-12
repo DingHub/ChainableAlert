@@ -40,5 +40,6 @@ or
     print("showd!")
  }
 ```
+You can find an Objective-C version [HERE](https://github.com/DingHub/ChainableAlert-OC)
 
 
