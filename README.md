@@ -8,43 +8,37 @@ Usage:
 in view controller:
 ```
 self.actionSheet("Title", message: "message")
-            .normalButton("normal1")
-            .normalButton("normal2")
-            .normalButton("normal3") {
-                print("normal3")
-            }
-            .destructiveButton("destructive1") {
-                print("destructive1")
-            }
-            .destructiveButton("destructive2")
-            .cancleButton("cancle")
-            .show(animated: true, fromPosition: (20, 30)) {
-                print("showed")
-        }
+ .normalButton("normal1")
+ .normalButton("normal2")
+ .normalButton("normal3") {
+    print("normal3")
+ }
+ .destructiveButton("destructive1") {
+    print("destructive1")
+ }
+ .destructiveButton("destructive2")
+ .cancleButton("cancle")
+ .show(animated: true)
 ```
 or
 ```
-ChainableAlert
-            .alert("Title", message: "message")
-            .normalButton("normal1") {
-                print("normal1")
-            }
-            .normalButton("normal2")
-            .normalButton("normal3") {
-                print("normal3")
-            }
-            .destructiveButton("destructive1") {
-                print("destructive1")
-            }
-            .destructiveButton("destructive2") {
-                print("destructive2")
-            }
-            .cancleButton("cancle") {
-                print("canceled")
-            }
-            .show(animated: true) {
-                    print("showd!")
-        }
+ ChainableAlert
+ .alert("Title", message: "message")
+ .normalButton("normal1")
+ .normalButton("normal2")
+ .normalButton("normal3") {
+    print("normal3")
+ }
+ .destructiveButton("destructive1") {
+    print("destructive1")
+ }
+ .destructiveButton("destructive2")
+ .cancleButton("cancle") {
+    print("canceled")
+ }
+ .show(animated: true) {
+    print("showd!")
+ }
 ```
 
 
