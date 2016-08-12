@@ -31,15 +31,9 @@ class ViewController: UIViewController, UIAlertViewDelegate {
             }
             .destructiveButton("destructive2")
             .cancleButton("cancle")
-            .show(fromPosition: (20, 30),
-                     animated: true) {
-                        print("showd!")
+            .show(animated: true, fromPosition: (20, 30)) {
+                print("showed")
         }
-
-    }
-    
-    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        print(buttonIndex)
     }
 
 }

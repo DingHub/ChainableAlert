@@ -71,57 +71,57 @@ public struct ChainableAlert {
      - parameter animated:       If below iOS 8 , no use.
      - parameter completion:     If below iOS 8 , no use.
      */
-    public func show(viewController: UIViewController? = nil, fromPosition:(x: CGFloat, y: CGFloat)? = nil, animated:Bool, completion: (() -> Void)? = nil) {
-//        if #available(iOS 8.0, *) {
-//            let alertStyle: UIAlertControllerStyle = style == .Alert ? .Alert : .ActionSheet
-//            let alertController = UIAlertController(title: title, message: message, preferredStyle: alertStyle)
-//            if let entities = normalEntities {
-//                for entity in entities {
-//                    let action = UIAlertAction(title: entity.title, style: .Default) { action in
-//                        let buttonAction = entity.action
-//                        buttonAction()
-//                    }
-//                    alertController.addAction(action)
-//                }
-//            }
-//            if let entities = destructiveEntities {
-//                for entity in entities {
-//                    let action = UIAlertAction(title: entity.title, style: .Destructive) { action in
-//                        let buttonAction = entity.action
-//                        buttonAction()
-//                    }
-//                    alertController.addAction(action)
-//                }
-//            }
-//            if let entity = cancleEntity {
-//                let action = UIAlertAction(title: entity.title, style: .Cancel) { action in
-//                    let buttonAction = entity.action
-//                    buttonAction()
-//                }
-//                alertController.addAction(action)
-//            }
-//            
-//            func showWithViewController(controller: UIViewController) {
-//                if let popoverController = alertController.popoverPresentationController {
-//                    popoverController.sourceView = controller.view
-//                    
-//                    if let fromPosition = fromPosition {
-//                        popoverController.sourceRect = CGRect(x: fromPosition.x, y: fromPosition.y, width: 0, height: 0)
-//                    } else {
-//                        let size = controller.view.bounds.size
-//                        popoverController.sourceRect = CGRect(x: size.width/2, y: size.height - 2, width: 0, height: 2)
-//                    }
-//                }
-//                controller.presentViewController(alertController, animated: animated, completion: completion)
-//            }
-//            
-//            if let controller = viewController {
-//                showWithViewController(controller)
-//            } else if let controller = UIApplication.sharedApplication().keyWindow?.rootViewController {
-//                showWithViewController(controller)
-//            }
-//            
-//        } else {
+    public func show(viewController: UIViewController? = nil, animated:Bool, fromPosition:(x: CGFloat, y: CGFloat)? = nil, completion: (() -> Void)? = nil) {
+        if #available(iOS 8.0, *) {
+            let alertStyle: UIAlertControllerStyle = style == .Alert ? .Alert : .ActionSheet
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: alertStyle)
+            if let entities = normalEntities {
+                for entity in entities {
+                    let action = UIAlertAction(title: entity.title, style: .Default) { action in
+                        let buttonAction = entity.action
+                        buttonAction()
+                    }
+                    alertController.addAction(action)
+                }
+            }
+            if let entities = destructiveEntities {
+                for entity in entities {
+                    let action = UIAlertAction(title: entity.title, style: .Destructive) { action in
+                        let buttonAction = entity.action
+                        buttonAction()
+                    }
+                    alertController.addAction(action)
+                }
+            }
+            if let entity = cancleEntity {
+                let action = UIAlertAction(title: entity.title, style: .Cancel) { action in
+                    let buttonAction = entity.action
+                    buttonAction()
+                }
+                alertController.addAction(action)
+            }
+            
+            func showWithViewController(controller: UIViewController) {
+                if let popoverController = alertController.popoverPresentationController {
+                    popoverController.sourceView = controller.view
+                    
+                    if let fromPosition = fromPosition {
+                        popoverController.sourceRect = CGRect(x: fromPosition.x, y: fromPosition.y, width: 0, height: 0)
+                    } else {
+                        let size = controller.view.bounds.size
+                        popoverController.sourceRect = CGRect(x: size.width/2, y: size.height - 2, width: 0, height: 2)
+                    }
+                }
+                controller.presentViewController(alertController, animated: animated, completion: completion)
+            }
+            
+            if let controller = viewController {
+                showWithViewController(controller)
+            } else if let controller = UIApplication.sharedApplication().keyWindow?.rootViewController {
+                showWithViewController(controller)
+            }
+            
+        } else {
             updateAlertButtonActions()
             if style == .Alert {
                 let alertView = UIAlertView(title: title, message: message, delegate: AlertHelper.sharedHelper, cancelButtonTitle: cancleEntity?.title)
@@ -145,7 +145,7 @@ public struct ChainableAlert {
                     actionSheet.showInView(controller.view)
                 }
             }
-//        }
+        }
     }
     
     // Mark: private
@@ -204,23 +204,11 @@ private class AlertHelper: NSObject, UIAlertViewDelegate, UIActionSheetDelegate 
     private override init() {}
     
     @objc func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        if let actions = alertButtonActions {
-            if buttonIndex >= actions.count {
-                return
-            }
-            let action = actions[buttonIndex]
-            action()
-        }
+        alertButtonActions?[buttonIndex]()
     }
     
     @objc func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
-        if let actions = alertButtonActions {
-            if buttonIndex >= actions.count {
-                return
-            }
-            let action = actions[buttonIndex]
-            action()
-        }
+        alertButtonActions?[buttonIndex]()
     }
 }
 

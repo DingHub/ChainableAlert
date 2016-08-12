@@ -10,7 +10,6 @@ import UIKit
 
 private var chainableAlert: ChainableAlert?
 public extension UIViewController {
-    // Mark: init
     
     /**
      Create alert, actually UIAlertView if the device is below iOS 8 or UIAlertController for iOS 8 and later
@@ -61,9 +60,9 @@ public extension UIViewController {
      - parameter animated:       If below iOS 8 , no use.
      - parameter completion:     If below iOS 8 , no use.
      */
-    public func show(fromPosition position:(x: CGFloat, y: CGFloat)? = nil, animated:Bool, completion: (() -> Void)? = nil) {
+    public func show(animated animated:Bool, fromPosition: (x: CGFloat, y: CGFloat)? = nil, completion: (() -> Void)? = nil) {
         if let alert = chainableAlert {
-            alert.show(self, fromPosition: position, animated: animated) {
+            alert.show(self, animated: animated, fromPosition: fromPosition) {
                 completion?()
             }
         }
