@@ -31,10 +31,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
             }
             .destructiveButton("destructive2")
             .cancleButton("cancle")
-            .show(animated: true, fromPosition: (20, 30)) {
-                print("showed")
-        }
-        
+            .show(animated: true)        
     }
 }
 

@@ -10,7 +10,31 @@ import UIKit
 
 public typealias AlertButtonAction = () -> Void
 
-public struct ChainableAlert {
+/**
+ *  Chainable use of alerts.
+ 
+ e.g.
+
+ ChainableAlert
+ .alert("Title", message: "message")
+ .normalButton("normal1")
+ .normalButton("normal2")
+ .normalButton("normal3") {
+    print("normal3")
+ }
+ .destructiveButton("destructive1") {
+    print("destructive1")
+ }
+ .destructiveButton("destructive2")
+ .cancleButton("cancle") {
+    print("canceled")
+ }
+ .show(animated: true) {
+    print("showd!")
+ }
+ 
+ */
+public class ChainableAlert {
     
     // Mark: init
     
@@ -32,7 +56,7 @@ public struct ChainableAlert {
     /**
      Add a normal button to the alert
      */
-    public mutating func normalButton(title: String, handler: AlertButtonAction? = nil) -> ChainableAlert {
+    public func normalButton(title: String, handler: AlertButtonAction? = nil) -> ChainableAlert {
         let entity = AlertButtonEntity(title: title, action: handler == nil ? {} : handler!)
         if normalEntities == nil {
             normalEntities = []
@@ -44,7 +68,7 @@ public struct ChainableAlert {
     /**
      Add a destructive button to the alert, we can add more than 1 for iOS 8 and later, BUT, if below iOS 8, this func will do nothing for alertView, and only one destructive button will added for actionSheet
      */
-    public mutating func destructiveButton(title: String, handler: AlertButtonAction? = nil) -> ChainableAlert {
+    public func destructiveButton(title: String, handler: AlertButtonAction? = nil) -> ChainableAlert {
         let entity = AlertButtonEntity(title: title, action: handler == nil ? {} : handler!)
         if destructiveEntities == nil {
             destructiveEntities = []
@@ -56,7 +80,7 @@ public struct ChainableAlert {
     /**
      Add a cancel button to the alert, the most number of cancel button is 1
      */
-    public mutating func cancleButton(title: String, handler: AlertButtonAction? = nil) -> ChainableAlert {
+    public func cancleButton(title: String, handler: AlertButtonAction? = nil) -> ChainableAlert {
         let entity = AlertButtonEntity(title: title, action: handler == nil ? {} : handler!)
         cancleEntity = entity
         return self
