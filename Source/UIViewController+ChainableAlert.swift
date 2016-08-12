@@ -8,8 +8,8 @@
 
 import UIKit
 
-var chainableAlert: ChainableAlert?
-extension UIViewController {
+private var chainableAlert: ChainableAlert?
+public extension UIViewController {
     // Mark: init
     
     /**
