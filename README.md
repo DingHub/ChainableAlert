@@ -13,14 +13,13 @@ self.actionSheet("Title", message: "message")
             .normalButton("normal3") {
                 print("normal3")
             }
-            .destructiveButton("destructive1")
-            .destructiveButton("destructive2") {
-                print("destructive2")
+            .destructiveButton("destructive1") {
+                print("destructive1")
             }
+            .destructiveButton("destructive2")
             .cancleButton("cancle")
-            .show(fromPosition: (20, 30),
-                     animated: true) {
-                        print("showd!")
+            .show(animated: true, fromPosition: (20, 30)) {
+                print("showed")
         }
 ```
 or
