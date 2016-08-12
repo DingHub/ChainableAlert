@@ -17,9 +17,7 @@ self.actionSheet("Title", message: "message")
             .destructiveButton("destructive2") {
                 print("destructive2")
             }
-            .cancleButton("cancle") {
-                print("canceled")
-            }
+            .cancleButton("cancle")
             .show(fromPosition: (20, 30),
                      animated: true) {
                         print("showd!")
