@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/DingHub/ChainableAlert.git", :tag => "0.1" }
   s.source_files  = "Source/*.{Swift}"
   s.platform     = :ios
-  s.platform     = :ios, "7.0"
+  s.platform     = :ios, "8.0"
   s.requires_arc = true
 
 end
