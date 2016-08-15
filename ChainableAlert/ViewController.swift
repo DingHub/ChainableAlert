@@ -21,18 +21,18 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     @IBAction func showAlert(sender: AnyObject) {
         
         self.alert(title: "Title", message: "message")
-            .normalButton("normal1")
-            .normalButton("normal2")
-            .normalButton("normal3") {
-                print("normal3")
-            }
-            .textField(configration: { textField in
-                textField.placeholder = "Input your words~"
+            .textField(configuration: { textField in
+                textField.placeholder = "Username"
             })
-            .destructiveButton("destructive1") {
-                print("destructive1")
+            .textField(configuration: { textField in
+                textField.placeholder = "Password"
+                textField.secureTextEntry = true
+            })
+            .normalButton("Login") { alert in
+                if let textFields = alert.textFields {
+                    print("Username:\(textFields[0].text!)\nPassword:\(textFields[1].text!)")
+                }
             }
-            .destructiveButton("destructive2")
             .cancleButton("cancle")
             .show(animated: true)
         

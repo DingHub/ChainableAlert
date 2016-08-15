@@ -15,23 +15,45 @@ private var chainableAlert: ChainableAlert?
  
  e.g.
  
- self.alert(title: "Title", message: "message")
+ 1.
+ self
+ .alert(title: "Title", message: "message")
  .normalButton("normal1")
  .normalButton("normal2")
  .normalButton("normal3") {
     print("normal3")
  }
- .textField(configration: { textField in
-    textField.placeholder = "Input your words~"
- })
  .destructiveButton("destructive1") {
     print("destructive1")
  }
  .destructiveButton("destructive2")
+ .cancleButton("cancle") {
+    print("canceled")
+ }
+ .show(animated: true) {
+    print("showd!")
+ }
+
+ 2.
+ self
+ .alert(title: "Title", message: "message")
+ .textField(configuration: { textField in
+    textField.placeholder = "Username"
+ })
+ .textField(configuration: { textField in
+ textField.placeholder = "Password"
+    textField.secureTextEntry = true
+ })
+ .normalButton("Login") { alert in
+    if let textFields = alert.textFields {
+        print("Username:\(textFields[0].text!)\nPassword:\(textFields[1].text!)")
+    }
+ }
  .cancleButton("cancle")
  .show(animated: true)
 
  */
+@available (iOS 8, *)
 public extension UIViewController {
     
     /**
@@ -78,8 +100,8 @@ public extension UIViewController {
     /**
      Add a textFeild to the alert, if is under iOS 8.0 or is action sheet, no use.
      */
-    public func textField(configration configration: AlertTextFeildConfigrationHandler? = nil) -> UIViewController {
-        chainableAlert?.textField(configuration: configration)
+    public func textField(configuration configuration: AlertTextFeildConfigurationHandler? = nil) -> UIViewController {
+        chainableAlert?.textField(configuration: configuration)
         return self
     }
     
