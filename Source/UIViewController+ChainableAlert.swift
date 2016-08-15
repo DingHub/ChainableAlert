@@ -17,17 +17,17 @@ private var chainableAlert: ChainableAlert?
  
  1.
  self
- .alert(title: "Title", message: "message")
+ .actionSheet(title: "Title", message: "message")
  .normalButton("normal1")
  .normalButton("normal2")
- .normalButton("normal3") {
+ .normalButton("normal3") { alert in
     print("normal3")
  }
- .destructiveButton("destructive1") {
+ .destructiveButton("destructive1") { alert in
     print("destructive1")
  }
  .destructiveButton("destructive2")
- .cancleButton("cancle") {
+ .cancleButton("cancle") { alert in
     print("canceled")
  }
  .show(animated: true) {
