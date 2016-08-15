@@ -15,12 +15,15 @@ private var chainableAlert: ChainableAlert?
  
  e.g.
  
- self.actionSheet("Title", message: "message")
+ self.alert(title: "Title", message: "message")
  .normalButton("normal1")
  .normalButton("normal2")
  .normalButton("normal3") {
     print("normal3")
  }
+ .textField(configration: { textField in
+    textField.placeholder = "Input your words~"
+ })
  .destructiveButton("destructive1") {
     print("destructive1")
  }
@@ -34,15 +37,15 @@ public extension UIViewController {
     /**
      Create alert, actually UIAlertView if the device is below iOS 8 or UIAlertController for iOS 8 and later
      */
-    public func alert(titile: String?, message: String?) -> UIViewController {
-        chainableAlert = ChainableAlert.alert(titile, message: message)
+    public func alert(title title: String? = nil, message: String? = nil) -> UIViewController {
+        chainableAlert = ChainableAlert.alert(title: title, message: message)
         return self
     }
     /**
      Create alert, actually UIActionSheet if the device is below iOS 8 or UIAlertController for iOS 8 and later
      */
-    public func actionSheet(titile: String?, message: String?) -> UIViewController {
-        chainableAlert = ChainableAlert.actionSheet(titile, message: message)
+    public func actionSheet(title title: String? = nil, message: String? = nil) -> UIViewController {
+        chainableAlert = ChainableAlert.actionSheet(title: title, message: message)
         return self
     }
     
@@ -69,6 +72,14 @@ public extension UIViewController {
      */
     public func cancleButton(title: String, handler: AlertButtonAction? = nil) -> UIViewController {
         chainableAlert?.cancleButton(title, handler: handler)
+        return self
+    }
+    
+    /**
+     Add a textFeild to the alert, if is under iOS 8.0 or is action sheet, no use.
+     */
+    public func textField(configration configration: AlertTextFeildConfigrationHandler? = nil) -> UIViewController {
+        chainableAlert?.textField(configuration: configration)
         return self
     }
     

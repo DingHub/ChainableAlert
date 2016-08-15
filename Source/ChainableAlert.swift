@@ -9,6 +9,7 @@
 import UIKit
 
 public typealias AlertButtonAction = () -> Void
+public typealias AlertTextFeildConfigrationHandler = (UITextField) -> Void
 
 /**
  *  Chainable use of alerts.
@@ -41,14 +42,14 @@ public class ChainableAlert {
     /**
      Create alert, actually UIAlertView if the device is below iOS 8 or UIAlertController for iOS 8 and later
      */
-    public static func alert(titile: String?, message: String?) -> ChainableAlert {
-        return ChainableAlert(title: titile, message: message, style: .Alert)
+    public static func alert(title title: String? = nil, message: String? = nil) -> ChainableAlert {
+        return ChainableAlert(title: title, message: message, style: .Alert)
     }
     /**
      Create alert, actually UIActionSheet if the device is below iOS 8 or UIAlertController for iOS 8 and later
      */
-    public static func actionSheet(titile: String?, message: String?) -> ChainableAlert {
-        return ChainableAlert(title: titile, message: message, style: .ActionSheet)
+    public static func actionSheet(title title: String? = nil, message: String? = nil) -> ChainableAlert {
+        return ChainableAlert(title: title, message: message, style: .ActionSheet)
     }
     
     // Mark: add buttons
@@ -83,6 +84,21 @@ public class ChainableAlert {
     public func cancleButton(title: String, handler: AlertButtonAction? = nil) -> ChainableAlert {
         let entity = AlertButtonEntity(title: title, action: handler == nil ? {} : handler!)
         cancleEntity = entity
+        return self
+    }
+    
+    /**
+     Add a textFeild to the alert, if is under iOS 8.0 or is action sheet, no use.
+     */
+    public func textField(configuration configuration: AlertTextFeildConfigrationHandler? = nil) -> ChainableAlert {
+        guard style == .Alert else {
+            return self
+        }
+        let handler = configuration == nil ? {_ in } : configuration!
+        if textHandlers == nil {
+            textHandlers = []
+        }
+        textHandlers?.append(handler)
         return self
     }
     
@@ -123,6 +139,12 @@ public class ChainableAlert {
                     buttonAction()
                 }
                 alertController.addAction(action)
+            }
+            
+            if let textHandlers = textHandlers {
+                for handler in textHandlers {
+                    alertController.addTextFieldWithConfigurationHandler(handler)
+                }
             }
             
             func showWithViewController(controller: UIViewController) {
@@ -181,6 +203,7 @@ public class ChainableAlert {
     private var normalEntities: [AlertButtonEntity]?
     private var destructiveEntities: [AlertButtonEntity]?
     private var cancleEntity: AlertButtonEntity?
+    private var textHandlers: [AlertTextFeildConfigrationHandler]?
     
     private init(title: String?, message: String?, style: AlertStyle) {
         self.title = title

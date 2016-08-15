@@ -20,18 +20,22 @@ class ViewController: UIViewController, UIAlertViewDelegate {
 
     @IBAction func showAlert(sender: AnyObject) {
         
-        self.actionSheet("Title", message: "message")
+        self.alert(title: "Title", message: "message")
             .normalButton("normal1")
             .normalButton("normal2")
             .normalButton("normal3") {
                 print("normal3")
             }
+            .textField(configration: { textField in
+                textField.placeholder = "Input your words~"
+            })
             .destructiveButton("destructive1") {
                 print("destructive1")
             }
             .destructiveButton("destructive2")
             .cancleButton("cancle")
-            .show(animated: true)        
+            .show(animated: true)
+        
     }
 }
 
