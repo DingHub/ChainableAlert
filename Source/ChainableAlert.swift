@@ -8,9 +8,6 @@
 
 import UIKit
 
-public typealias AlertButtonAction = (ChainableAlert) -> Void
-public typealias AlertTextFieldConfigurationHandler = (UITextField) -> Void
-
 /**
  *  Chainable use to show an alert.
  
@@ -54,6 +51,11 @@ public typealias AlertTextFieldConfigurationHandler = (UITextField) -> Void
  .show(animated: true)
  
  */
+
+
+public typealias AlertButtonAction = (ChainableAlert) -> Void
+public typealias AlertTextFieldConfigurationHandler = (UITextField) -> Void
+
 @available (iOS 8, *)
 public class ChainableAlert {
     
@@ -122,6 +124,7 @@ public class ChainableAlert {
         return self
     }
     
+    /// textFields added to the alert.
     public var textFields: [UITextField]?
     
     // Mark: show
@@ -134,6 +137,7 @@ public class ChainableAlert {
     public func show(viewController: UIViewController? = nil, animated:Bool, fromPosition:(x: CGFloat, y: CGFloat)? = nil, completion: (() -> Void)? = nil) {
         let alertStyle: UIAlertControllerStyle = style == .Alert ? .Alert : .ActionSheet
         let alertController = UIAlertController(title: title, message: message, preferredStyle: alertStyle)
+        
         if let entities = normalEntities {
             for entity in entities {
                 let action = UIAlertAction(title: entity.title, style: .Default) { action in
@@ -143,6 +147,7 @@ public class ChainableAlert {
                 alertController.addAction(action)
             }
         }
+        
         if let entities = destructiveEntities {
             for entity in entities {
                 let action = UIAlertAction(title: entity.title, style: .Destructive) { action in
@@ -152,6 +157,7 @@ public class ChainableAlert {
                 alertController.addAction(action)
             }
         }
+        
         if let entity = cancleEntity {
             let action = UIAlertAction(title: entity.title, style: .Cancel) { action in
                 let buttonAction = entity.action
