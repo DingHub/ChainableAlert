@@ -7,7 +7,7 @@ Usage:
 ---
 in view controller:
 ```
-self.actionSheet("Title", message: "message")
+self.actionSheet(title: "Title", message: "message")
  .normalButton("normal1")
  .normalButton("normal2")
  .normalButton("normal3") {
@@ -23,7 +23,7 @@ self.actionSheet("Title", message: "message")
 or
 ```
  ChainableAlert
- .alert("Title", message: "message")
+ .alert(title: "Title", message: "message")
  .normalButton("normal1")
  .normalButton("normal2")
  .normalButton("normal3") {
