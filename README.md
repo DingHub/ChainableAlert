@@ -6,8 +6,7 @@ Usage:
 ---
 in view controller:
 ```
-self
- .alert(title: "Title", message: "message")
+self.alert(title: "Title", message: "message")
  .normalButton("normal1")
  .normalButton("normal2")
  .normalButton("normal3") { alert in
@@ -27,8 +26,7 @@ self
 ```
 or an alert with textFeilds:
 ```
- self
- .alert(title: "Title", message: "message")
+ self.alert(title: "Title", message: "message")
  .textField(configuration: { textField in
     textField.placeholder = "Username"
  })
