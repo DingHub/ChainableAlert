@@ -9,7 +9,7 @@
 import UIKit
 
 public typealias AlertButtonAction = (ChainableAlert) -> Void
-public typealias AlertTextFeildConfigurationHandler = (UITextField) -> Void
+public typealias AlertTextFieldConfigurationHandler = (UITextField) -> Void
 
 /**
  *  Chainable use to show an alert.
@@ -108,9 +108,9 @@ public class ChainableAlert {
     }
     
     /**
-     Add a textFeild to the alert, if is under iOS 8.0 or is action sheet, no use.
+     Add a textField to the alert, if is under iOS 8.0 or is action sheet, no use.
      */
-    public func textField(configuration configuration: AlertTextFeildConfigurationHandler? = nil) -> ChainableAlert {
+    public func textField(configuration configuration: AlertTextFieldConfigurationHandler? = nil) -> ChainableAlert {
         guard style == .Alert else {
             return self
         }
@@ -199,7 +199,7 @@ public class ChainableAlert {
     private var normalEntities: [AlertButtonEntity]?
     private var destructiveEntities: [AlertButtonEntity]?
     private var cancleEntity: AlertButtonEntity?
-    private var textHandlers: [AlertTextFeildConfigurationHandler]?
+    private var textHandlers: [AlertTextFieldConfigurationHandler]?
     
     private init(title: String?, message: String?, style: AlertStyle) {
         self.title = title

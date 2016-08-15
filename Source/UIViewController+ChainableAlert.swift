@@ -98,9 +98,9 @@ public extension UIViewController {
     }
     
     /**
-     Add a textFeild to the alert, if is under iOS 8.0 or is action sheet, no use.
+     Add a textField to the alert, if is under iOS 8.0 or is action sheet, no use.
      */
-    public func textField(configuration configuration: AlertTextFeildConfigurationHandler? = nil) -> UIViewController {
+    public func textField(configuration configuration: AlertTextFieldConfigurationHandler? = nil) -> UIViewController {
         chainableAlert?.textField(configuration: configuration)
         return self
     }
