@@ -17,7 +17,7 @@ public typealias AlertTextFeildConfigrationHandler = (UITextField) -> Void
  e.g.
 
  ChainableAlert
- .alert("Title", message: "message")
+ .alert(title: "Title", message: "message")
  .normalButton("normal1")
  .normalButton("normal2")
  .normalButton("normal3") {
