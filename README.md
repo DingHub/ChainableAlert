@@ -43,6 +43,6 @@ or an alert with textFeilds:
             .show(animated: true)
 
 ```
-You can find an Objective-C version here:[ChainableAlert-OC](https://github.com/DingHub/ChainableAlert-OC)
+You can find an Objective-C version here: [ChainableAlert-OC](https://github.com/DingHub/ChainableAlert-OC)
 
 
