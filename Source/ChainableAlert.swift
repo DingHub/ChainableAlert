@@ -213,15 +213,18 @@ public class ChainableAlert {
     
 }
 
-// Mark: private
+// Mark: - private
 
-private enum AlertStyle : Int {
-    case Alert
-    case ActionSheet
-}
-
-private struct AlertButtonEntity {
-    var title: String
-    var action: AlertButtonAction
+private extension ChainableAlert {
+    
+    private enum AlertStyle : Int {
+        case Alert
+        case ActionSheet
+    }
+    
+    private struct AlertButtonEntity {
+        var title: String
+        var action: AlertButtonAction
+    }
 }
 
