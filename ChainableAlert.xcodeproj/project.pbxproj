@@ -72,8 +72,8 @@
 		848FFD541D5C3C9300AF6B0D /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				848FFD551D5C3CA200AF6B0D /* ChainableAlert.swift */,
 				848FFD571D5C840B00AF6B0D /* UIViewController+ChainableAlert.swift */,
+				848FFD551D5C3CA200AF6B0D /* ChainableAlert.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";

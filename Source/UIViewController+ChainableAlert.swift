@@ -8,8 +8,6 @@
 
 import UIKit
 
-private var chainableAlert: ChainableAlert?
-
 /**
  *  Add chainable use to show an alert.
  
@@ -119,3 +117,18 @@ public extension UIViewController {
         }
     }
 }
+
+private extension UIViewController {
+    struct AssociatedKeys {
+        static var chainableAlertKey = "chainableAlertKey"
+    }
+    var chainableAlert: ChainableAlert? {
+        get {
+            return (objc_getAssociatedObject(self, &AssociatedKeys.chainableAlertKey) as? ChainableAlert)
+        }
+        set {
+            objc_setAssociatedObject(self, &AssociatedKeys.chainableAlertKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+}
+
