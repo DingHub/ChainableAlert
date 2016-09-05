@@ -18,7 +18,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         super.didReceiveMemoryWarning()
     }
 
-    @IBAction func showAlert(sender: AnyObject) {
+    @IBAction func showAlert(_ sender: AnyObject) {
         
         self.alert(title: "Title", message: "message")
             .textField(configuration: { textField in
@@ -26,14 +26,14 @@ class ViewController: UIViewController, UIAlertViewDelegate {
             })
             .textField(configuration: { textField in
                 textField.placeholder = "Password"
-                textField.secureTextEntry = true
+                textField.isSecureTextEntry = true
             })
-            .normalButton("Login") { alert in
+            .normalButton(title: "Login") { alert in
                 if let textFields = alert.textFields {
                     print("Username:\(textFields[0].text!)\nPassword:\(textFields[1].text!)")
                 }
             }
-            .cancleButton("cancle")
+            .cancleButton(title: "cancle")
             .show(animated: true)
         
     }
