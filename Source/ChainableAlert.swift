@@ -196,14 +196,14 @@ public class ChainableAlert {
     
     // Mark: private
     
-    var title: String?
-    var message: String?
-    var style: AlertStyle = .alert
+    fileprivate var title: String?
+    fileprivate var message: String?
+    fileprivate var style: AlertStyle = .alert
     
-    var normalEntities: [AlertButtonEntity]?
-    var destructiveEntities: [AlertButtonEntity]?
-    var cancleEntity: AlertButtonEntity?
-    var textHandlers: [AlertTextFieldConfigurationHandler]?
+    fileprivate var normalEntities: [AlertButtonEntity]?
+    fileprivate var destructiveEntities: [AlertButtonEntity]?
+    fileprivate var cancleEntity: AlertButtonEntity?
+    fileprivate var textHandlers: [AlertTextFieldConfigurationHandler]?
     
     private init(title: String?, message: String?, style: AlertStyle) {
         self.title = title
@@ -215,7 +215,7 @@ public class ChainableAlert {
 
 // Mark: - private
 
-extension ChainableAlert {
+private extension ChainableAlert {
     
     enum AlertStyle : Int {
         case alert
