@@ -43,6 +43,11 @@ or an alert with textFeilds:
             .show(animated: true)
 
 ```
+
+Swift3 branch is ready, I'll combine the branch to master when the final official version of Swift3 released.
+
+Swift3分支已准备好，在Swift3正式版发布后会合并到master分支。
+
 You can find an Objective-C version here: [ChainableAlert-OC](https://github.com/DingHub/ChainableAlert-OC)
 
 
