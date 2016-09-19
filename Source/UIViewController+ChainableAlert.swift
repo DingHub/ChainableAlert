@@ -51,20 +51,21 @@ import UIKit
  .show(animated: true)
 
  */
+
 @available (iOS 8, *)
 public extension UIViewController {
     
     /**
      Create an alert
      */
-    public func alert(title title: String? = nil, message: String? = nil) -> UIViewController {
+    public func alert(title: String? = nil, message: String? = nil) -> UIViewController {
         chainableAlert = ChainableAlert.alert(title: title, message: message)
         return self
     }
     /**
      Create an action sheet
      */
-    public func actionSheet(title title: String? = nil, message: String? = nil) -> UIViewController {
+    public func actionSheet(title: String? = nil, message: String? = nil) -> UIViewController {
         chainableAlert = ChainableAlert.actionSheet(title: title, message: message)
         return self
     }
@@ -75,7 +76,7 @@ public extension UIViewController {
      Add a normal button to the alert
      */
     public func normalButton(title: String, handler: AlertButtonAction? = nil) -> UIViewController {
-        chainableAlert?.normalButton(title, handler: handler)
+        let _ = chainableAlert?.normalButton(title: title, handler: handler)
         return self
     }
     
@@ -83,7 +84,7 @@ public extension UIViewController {
      Add a destructive button to the alert
      */
     public func destructiveButton(title: String, handler: AlertButtonAction? = nil) -> UIViewController {
-        chainableAlert?.destructiveButton(title, handler: handler)
+        let _ = chainableAlert?.destructiveButton(title: title, handler: handler)
         return self
     }
     
@@ -91,15 +92,15 @@ public extension UIViewController {
      Add a cancel button to the alert, the most number of cancel button is 1
      */
     public func cancleButton(title: String, handler: AlertButtonAction? = nil) -> UIViewController {
-        chainableAlert?.cancleButton(title, handler: handler)
+        let _ = chainableAlert?.cancleButton(title: title, handler: handler)
         return self
     }
     
     /**
      Add a textField to the alert, if is action sheet, no use.
      */
-    public func textField(configuration configuration: AlertTextFieldConfigurationHandler? = nil) -> UIViewController {
-        chainableAlert?.textField(configuration: configuration)
+    public func textField(configuration: AlertTextFieldConfigurationHandler? = nil) -> UIViewController {
+        let _ = chainableAlert?.textField(configuration: configuration)
         return self
     }
     
@@ -109,9 +110,9 @@ public extension UIViewController {
      Show the alert
      - parameter fromPosition:   If is action sheet, and device is iPad, we can set the source point for the popover controller
      */
-    public func show(animated animated:Bool, fromPosition: (x: CGFloat, y: CGFloat)? = nil, completion: (() -> Void)? = nil) {
+    public func show(animated: Bool, fromPosition: (x: CGFloat, y: CGFloat)? = nil, completion: (() -> Void)? = nil) {
         if let alert = chainableAlert {
-            alert.show(self, animated: animated, fromPosition: fromPosition) {
+            alert.show(viewController: self, animated: animated, fromPosition: fromPosition) {
                 completion?()
             }
         }
