@@ -44,8 +44,6 @@ or an alert with textFeilds:
 
 ```
 
-Swift3 branch is ready, I'll combine the branch to master when the final official version of Swift3 released.
-
 You can find an Objective-C version here: [ChainableAlert-OC](https://github.com/DingHub/ChainableAlert-OC)
 
 
