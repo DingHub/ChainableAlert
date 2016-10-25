@@ -19,7 +19,6 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     }
 
     @IBAction func showAlert(_ sender: AnyObject) {
-        
         self.alert(title: "Title", message: "message")
             .textField(configuration: { textField in
                 textField.placeholder = "Username"
@@ -35,7 +34,6 @@ class ViewController: UIViewController, UIAlertViewDelegate {
             }
             .cancleButton(title: "cancle")
             .show(animated: true)
-        
     }
 }
 
