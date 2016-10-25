@@ -173,7 +173,7 @@ public class ChainableAlert {
             textFields = alertController.textFields
         }
         
-        func showWithViewController(controller: UIViewController) {
+        func show(with controller: UIViewController) {
             if let popoverController = alertController.popoverPresentationController {
                 popoverController.sourceView = controller.view
                 
@@ -188,9 +188,9 @@ public class ChainableAlert {
         }
         
         if let controller = viewController {
-            showWithViewController(controller: controller)
+            show(with: controller)
         } else if let controller = UIApplication.shared.keyWindow?.rootViewController {
-            showWithViewController(controller: controller)
+            show(with: controller)
         }
     }
     
